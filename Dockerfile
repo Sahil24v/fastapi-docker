@@ -26,6 +26,8 @@ FROM python:3.9-alpine as builder
 WORKDIR /app
 
 # Install build dependencies
+# In Dockerfiles, the --no-cache-dir flag is typically used when installing dependencies using package managers like pip (Python) or npm (Node.js) to prevent caching of downloaded packages and dependencies. This can be useful in scenarios where you want to ensure that the latest version of dependencies is always installed without relying on cached versions.
+# In this example, when building the Docker image, the pip install command will not use any cached packages, ensuring that the dependencies listed in requirements.txt are freshly installed every time the Docker image is built.
 RUN apk add --no-cache gcc musl-dev libffi-dev
 
 # Copy the requirements file into the container
